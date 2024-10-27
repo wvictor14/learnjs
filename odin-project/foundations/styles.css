@@ -15,7 +15,6 @@ a {
 .header-links {
     justify-content: space-between;
     padding-right: 20px;
-    border: 1px solid black;
 }
 .navbar li {
     display: inline-block;
@@ -32,13 +31,14 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
     padding: 80px 20px 80px 20px;
 }
 .about .awesome {
     justify-content: left;
-    border: 1px solid black;
 
+}
+.about .awesome * {
+    margin: 2.5px
 }
 .about .placeholder {
     margin-top: 0px;
@@ -47,6 +47,13 @@ a {
     padding-bottom: 40px;
     padding-left: 80px;
     padding-right: 80px;
-    border: 1px solid black;
     background-color: slategray;
+}
+.about button {
+    color: white;
+    background-color: rgb(0, 128, 255);
+    margin-top: 8px;
+    padding: 4px 20px 4px 20px;
+    border-radius: 4px;
+    border: none;
 }
