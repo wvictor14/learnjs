@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+}
+
+.header-logo {
+    font-size: xx-large;
+    display: inline-block;
+}
+.header-links {
+    display: inline-block;
+    justify-content: flex-end;
+    border: 1px solid black
+}
+.navbar li {
+    display: inline-block;
+    align-items: center;
+}
+
