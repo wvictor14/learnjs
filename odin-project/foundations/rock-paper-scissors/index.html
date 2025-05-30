@@ -3,6 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="custom.js"></script>
+    <body>
+        <div id="results"> </div>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <script src="custom.js"></script>
+        <script>
+            let rock = document.querySelector('#rock');
+            
+            const results = {
+                user: '',
+                computer: '', 
+                winner: ''
+            }
+
+            const div = document.querySelector("div");
+            const para1 = document.createElement("p");
+            const para2 = document.createElement("p");
+            const h1 = document.createElement("h1");
+
+            function addResults() {
+                para1.textContent = "The user chooses: " + results.user;
+                para2.textContent = "The computer chooses: " + results.computer;
+                h1.textContent = "The winner is: " + results.winner;
+                div.appendChild(h1);
+                div.appendChild(para1);
+                div.appendChild(para2);
+            }
+
+            rock.addEventListener('click',() => {
+                results.user = 'rock';
+                results.computer = getComputerChoice();
+                results.winner = playRound('rock', results.computer);
+                addResults();
+            });
+
+            
+
+
+        </script>
+    </body>
     <title>Document</title>
 </head>
