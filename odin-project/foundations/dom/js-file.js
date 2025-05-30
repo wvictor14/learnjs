@@ -34,3 +34,12 @@ div2.appendChild(h1inner);
 div2.appendChild(p2);
 container.appendChild(div2);
 
+// button
+
+const btn = document.querySelector("#btn");
+btn.addEventListener("click", () => {
+  alert("Hello World");
+});
+btn.addEventListener("click", function (e) {
+  e.target.style.background = "blue";
+});
