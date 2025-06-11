@@ -1,0 +1,20 @@
+.square {
+  flex: 1;
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 0px;
+  margin: 2px;
+  background-color:azure;
+}
+
+.hovered {
+  background-color: forestgreen;
+}
+
+#grid {
+  width: 960;
+}
+
+.row {
+  display: flex;
+}
