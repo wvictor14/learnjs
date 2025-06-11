@@ -2,8 +2,6 @@
 const btn = document.querySelector("#btn");
 const grid = document.querySelector('#grid');
 
-
-
 function createGrid(grid, x = 16, y = 16){
   for (let i = 0; i < x-1; i++) {
     let row = createRow(ncol = y);
@@ -27,4 +25,17 @@ function createRow(ncol = 16) {
   }
   return row
 }
+
+// create the grid
 createGrid(grid, 16)
+
+// set up the hover effect 
+// first get all the squares
+const squares = grid.querySelectorAll('.square');
+
+// add mouseover event listener to each square
+squares.forEach((square) => {
+  square.addEventListener("mouseover", () => {
+    square.classList.add('hovered')
+  });
+});
