@@ -3,6 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="custom.js"></script>
+    <body>
+        <div id="results"> </div>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <script src="custom.js"></script>
+        <script>
+            let rock = document.querySelector('#rock');
+            let paper = document.querySelector('#paper');
+            let scissors = document.querySelector('#scissors');
+            
+            const results = {
+                user: '',
+                computer: '', 
+                winner: '',
+                user_score: 0,
+                computer_score: 0
+            }
+
+            const div = document.querySelector("div");
+            const para1 = document.createElement("p");
+            const para2 = document.createElement("p");
+            const h1 = document.createElement("h1");
+
+            // scores
+            const pus = document.createElement("p");
+            const pcs = document.createElement("p");
+
+            function extractResults(userC) {
+                results.user = userC;
+                results.computer = getComputerChoice();
+                results.winner = playRound(userC, results.computer);
+
+                if (results.winner === 'Human') results.user_score++;
+                if (results.winner === 'Computer') results.computer_score++;
+            }
+
+            function addResults() {
+                para1.textContent = "The user chooses: " + results.user;
+                para2.textContent = "The computer chooses: " + results.computer;
+                h1.textContent = "The round winner is: " + results.winner;
+
+                pus.textContent = 'User score: ' + results.user_score;
+                pcs.textContent = 'Computer score: ' + results.computer_score;
+
+                if (results.user_score === 5 | results.computer_score === 5) {
+                    h1.textContent = 
+                        "The Winner of Rock, Paper, Scissors is: " + 
+                        results.winner + 
+                        '!!!';
+                }
+
+                div.appendChild(h1);
+                div.appendChild(para1);
+                div.appendChild(para2);
+                div.appendChild(pus);
+                div.appendChild(pcs);
+
+            }
+
+            rock.addEventListener('click',() => {
+                extractResults('rock');
+                addResults();
+            });
+            
+            paper.addEventListener('click',() => {
+                extractResults('paper');
+                addResults();
+            });
+            
+            scissors.addEventListener('click',() => {
+                extractResults('scissors');
+                addResults();
+            });
+
+            
+
+
+        </script>
+    </body>
     <title>Document</title>
 </head>

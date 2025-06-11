@@ -44,6 +44,7 @@ function playRound(humanChoice, computerChoice) {
         out = 'Human'
     } else if (humanChoice == computerChoice) {
         msg = 'You both picked: ' + humanChoice + ". It's a tie!"
+        out = 'No one wins!'
     } else {
         msg = 'You lose! ' + humanChoice + ' loses to ' + computerChoice
         out = 'Computer'
@@ -90,4 +91,4 @@ function playGame() {
     }
 }
 
-playGame()
+//playGame()
