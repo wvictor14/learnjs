@@ -15,7 +15,7 @@ function createRow(ncol = 16) {
   row.classList.add('row');
 
   // square height is page width / number of squares, minus margin*2
-  const square_h = 960/ncol - 4;
+  const square_h = 960/ncol - 2;
 
   for (let i = 0; i < ncol-1; i++) {
     // each square has flex: 1
