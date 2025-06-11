@@ -49,7 +49,12 @@ applyHover();
 const btn = document.querySelector("#new");
 btn.addEventListener('click', () => {
   let nsquares = prompt('Enter a number below 100');
-  grid.innerHTML = '';
-  createGrid(grid, nsquares);
-  applyHover();
+
+  if (nsquares < 100) {
+    grid.innerHTML = '';
+    createGrid(grid, nsquares);
+    applyHover();
+  } else {
+    alert('must be less than 100')
+  }
 });
