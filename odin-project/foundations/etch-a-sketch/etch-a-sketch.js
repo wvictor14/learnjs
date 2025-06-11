@@ -31,15 +31,19 @@ function createRow(ncol = 16) {
 createGrid(grid, 16)
 
 // set up the hover effect 
-// first get all the squares
-const squares = grid.querySelectorAll('.square');
+function applyHover() {
+  // first get all the squares
+  const squares = grid.querySelectorAll('.square');
 
-// add mouseover event listener to each square
-squares.forEach((square) => {
-  square.addEventListener("mouseover", () => {
-    square.classList.add('hovered')
+  // add mouseover event listener to each square
+  squares.forEach((square) => {
+    square.addEventListener("mouseover", () => {
+      square.classList.add('hovered')
+    });
   });
-});
+}
+
+applyHover();
 
 // set up button
 const btn = document.querySelector("#new");
@@ -47,4 +51,5 @@ btn.addEventListener('click', () => {
   let nsquares = prompt('Enter a number below 100');
   grid.innerHTML = '';
   createGrid(grid, nsquares);
+  applyHover();
 });
