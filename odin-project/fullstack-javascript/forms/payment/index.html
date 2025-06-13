@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+    <form>
+      <h1>Payment form</h1>
+      <p>
+        Required fields are followed by
+        <strong><span aria-label="required">*</span></strong>.
+      </p>
+      <section>
+        <h2>Contact information</h2>
+        <fieldset>
+          <ul>
+            <li for="title_1">
+              <input type="radio" id="title_1" name="title" value="">
+              Ace
+            </li>
+            <li for="title_2">
+              <input type="radio" id="title_2" name="title" value="K">
+              King
+            </li>
+            <li for="title_3">
+              <input type="radio" id="title_3" name="title" value="Q">
+              Queen
+            </li>
+          </ul>
+        </fieldset>
+        <p>
+          <label for="name">
+            <span>Name:</span>
+            <strong><span aria-label="required">*</span></strong>
+          </label>
+          <input type="text" id="name" name="username" required="required">
+        </p>
+        <p>
+          <label for="mail">
+            <span>Email: </span>
+            <strong><span aria-label="reqiured">*</span></strong>
+          </label>
+          <input type="email" id="mail" name="user-mail" required="required">
+        </p>
+        <p>
+          <label for="pwd">
+            <span>Password: </span>
+            <strong><span aria-label="required">*</span></strong>
+          </label>
+          <input type="password" id="pwd" name="password" required="required">
+        </p>
+      </section>
+    </form>
+  </body>
+</html>
