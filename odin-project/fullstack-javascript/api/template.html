@@ -7,14 +7,20 @@
 </head>
 
 <body>
+  <form id="search" action="/submit_form" method="#">
+    <label for="searchterm">Search Gifs for:</label><br>
+    <textarea id="searchterm" name="searchterm" rows="1" cols="20"></textarea><br><br>
+    <input type="submit" value="Submit Message">
+  </form>
+
   <button class="btn-refresh btn">Refresh</button>
   <img src="#">
   <script>
     const img = document.querySelector('img');
 
-    const getGif = function () {
-
-      fetch('https://api.giphy.com/v1/gifs/translate?api_key=fylhgAhBfPGbtB0VvnMzA4XTg0VCqvD8&s=cats', { mode: 'cors' })
+    // define getGif which takes a search term as an argument
+    const getGif = function (search = 'cat') {
+      fetch('https://api.giphy.com/v1/gifs/translate?api_key=fylhgAhBfPGbtB0VvnMzA4XTg0VCqvD8&s=' + search, { mode: 'cors' })
         .then(function (response) {
           return response.json();
         })
@@ -23,10 +29,28 @@
         });
     }
 
+    // initialize with search for cat
     const btn = document.querySelector('.btn-refresh');
     getGif()
     btn.addEventListener('click', getGif);
 
+    // store the current listener
+    let curListener = getGif;
+
+    // submit form will search for gif
+    const searchForm = document.getElementById('search');
+    const searchFn = function (event) {
+      event.preventDefault();
+      const searchTerm = document.getElementById('searchterm');
+      getGif(searchTerm.value);
+
+      // replace refresh button listener with search listener
+      btn.removeEventListener('click', curListener);
+      curListener = searchFn;
+      btn.addEventListener('click', curListener);
+    }
+
+    searchForm.addEventListener('submit', searchFn)
   </script>
 </body>
 
