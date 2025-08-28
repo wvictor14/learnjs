@@ -7,16 +7,26 @@
 </head>
 
 <body>
+  <button class="btn-refresh btn">Refresh</button>
   <img src="#">
   <script>
     const img = document.querySelector('img');
-    fetch('https://api.giphy.com/v1/gifs/translate?api_key=fylhgAhBfPGbtB0VvnMzA4XTg0VCqvD8&s=cats', { mode: 'cors' })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        img.src = response.data.images.original.url;
-      });
+
+    const getGif = function () {
+
+      fetch('https://api.giphy.com/v1/gifs/translate?api_key=fylhgAhBfPGbtB0VvnMzA4XTg0VCqvD8&s=cats', { mode: 'cors' })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          img.src = response.data.images.original.url;
+        });
+    }
+
+    const btn = document.querySelector('.btn-refresh');
+    getGif()
+    btn.addEventListener('click', getGif);
+
   </script>
 </body>
 
