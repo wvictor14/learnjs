@@ -21,12 +21,38 @@
     // define getGif which takes a search term as an argument
     const getGif = function (search = 'cat') {
       fetch('https://api.giphy.com/v1/gifs/translate?api_key=fylhgAhBfPGbtB0VvnMzA4XTg0VCqvD8&s=' + search, { mode: 'cors' })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (response) {
-          img.src = response.data.images.original.url;
-        });
+        .then(
+          response => {
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            return response.json();
+          },
+          error => console.log('Error!')
+        )
+        .then(
+          response => {
+            // Check if the API returned an error or no data
+            if (response.meta && response.meta.status !== 200) {
+              throw new Error(`API error: ${response.meta.msg}`);
+            }
+
+            // Check if data exists and has the expected structure
+            if (!response.data || !response.data.images || !response.data.images.original) {
+              throw new Error(`No GIF found for search term: "${search}"`);
+            }
+            img.src = response.data.images.original.url
+          },
+          error => console.log('Error!!')
+        )
+        .catch(
+          error => {
+            console.error('Error fetching GIF:', error.message);
+            img.alt = `Could not load GIF for "${search}"`;
+          }
+        );
     }
 
     // initialize with search for cat
